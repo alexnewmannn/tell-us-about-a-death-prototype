@@ -76,13 +76,24 @@ $govuk-global-styles: true;
 .latest-version {
   border: 1px solid $govuk-border-colour;
   padding: 20px;
+}
 
-  dd {
-    margin: 0;
-  }
+article {
+  margin-bottom: 20px;
 
   .govuk-heading-s {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.previous-version {
+  border-left: $govuk-border-width solid $govuk-border-colour;
+  padding-left: 15px;
+
+  &, .latest-version {
+    dd {
+      margin: 0;
+    }
   }
 }
 

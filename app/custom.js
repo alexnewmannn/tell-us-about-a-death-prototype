@@ -1,30 +1,30 @@
 const fs = require('fs');
 const process = require('process');
 const folder = `${process.cwd()}/app/views/versions`;
-fs.readdir(folder, (err, files) => {
-  files.forEach(file => {
-    fs.stat(`${folder}/${file}`, (err2, stat) => {
-      const isDirectory = stat.isDirectory;
-      if (isDirectory) {
-        fs.readdir(`${folder}/${file}`, (err, subFiles) => { // make this recursive
-          fs.readFile(`${folder}/${file}/${subFiles}`, function (err, data) {
-              if (err) throw err;
-              console.log(data.toString());
-          });
-        });
-      }
-    });
-  })
-})
 
-const prototypes = () => {
-  return [
-    {
-      name: 'hi'
-    },
-    {
-      name: 'bye'
-    }
-  ]
+const isDirectory = (path => fs.statSync(path).isDirectory());
+const flattenArray = (files => [].concat.apply([], files));
+
+const readDirectory = (path) => {
+  if (isDirectory(path)) {
+    const folders = fs.readdirSync(path);
+    return flattenArray(folders.map(item => {
+      return isDirectory(`${path}/${item}`) ? readDirectory(`${path}/${item}`) : `${path}/${item}`;
+    })).filter(Boolean);
+  }
+  return [];
 }
-module.exports = prototypes;
+
+const readFiles = (path) => {
+  if (path.includes('index.html')) {
+    const file = fs.readFileSync(path);
+    return file.toString();
+  }
+  return false;
+}
+
+const fileContents = readDirectory(folder).map(file => {
+  return readFiles(file);
+}).filter(Boolean);
+
+module.exports = fileContents;
