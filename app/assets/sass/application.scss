@@ -75,25 +75,20 @@ $govuk-global-styles: true;
 
 .latest-version {
   border: 1px solid $govuk-border-colour;
+  margin-bottom: 20px;
   padding: 20px;
 }
 
 article {
-  margin-bottom: 20px;
-
   .govuk-heading-s {
     margin-bottom: 15px;
   }
 }
 
-.previous-version {
-  border-left: $govuk-border-width solid $govuk-border-colour;
-  padding-left: 15px;
-
-  &, .latest-version {
-    dd {
-      margin: 0;
-    }
+.previous-version,
+.latest-version {
+  dd {
+    margin: 0;
   }
 }
 

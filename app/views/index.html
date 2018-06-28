@@ -35,17 +35,22 @@
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">Prototypes</span>
     </summary>
+
+    {# Below is each prototype version's index page,
+    copy template.html and put in a directory as index.html to see it appear #}
+
     {% for item in latestPrototypes %}
       {% if loop.index != 1 %}
-        <div class="govuk-grid-row prototype-version">
+        <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-            <article class="previous-version">
+            <article class="previous-version govuk-details__text">
               <section>
                 {{ item | safe }}
               </section>
             </article>
           </div>
         </div>
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
       {% endif %}
     {% endfor %}
   </details>
