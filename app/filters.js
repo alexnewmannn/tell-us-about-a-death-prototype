@@ -1,3 +1,4 @@
+const locales = require('./locales.js');
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -37,7 +38,11 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
-
+console.log(locales)
+  filters.translate = t => locales.en_gb[t] ? locales.en_gb[t] : t;
+  // filters.translate = function(t) {
+  //   return 'he;lo';
+  // }
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

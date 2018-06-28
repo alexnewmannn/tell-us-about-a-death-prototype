@@ -74,7 +74,7 @@ var nunjucksAppEnv = nunjucks.configure(appViews, {
   express: app,
   noCache: true,
   watch: true
-})
+});
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
@@ -135,7 +135,11 @@ app.locals.cookieText = config.cookieText
 app.locals.promoMode = promoMode
 app.locals.releaseVersion = 'v' + releaseVersion
 app.locals.serviceName = config.serviceName
-app.locals.latestPrototypes =  custom;
+app.locals.latestPrototypes = custom;
+// app.locals.translate = (t => {
+//   console.log(t)
+//   return true;
+// }/*locales.en_gb[t] ? locales.en_gb[t] : t*/)
 
 // Support session data
 app.use(session({
