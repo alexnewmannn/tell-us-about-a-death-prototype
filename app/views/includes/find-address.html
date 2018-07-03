@@ -1,0 +1,17 @@
+<div class="postcode-group">
+  {{ govukInput({
+    label: {
+      text: "postcode" | translate
+    },
+    classes: "govuk-input--width-10",
+    id:  prefix + "-potscode",
+    name:  prefix + "-potscode"
+  }) }}
+
+  {{ govukButton({
+    text: "Find address",
+    id: prefix + "find-address",
+    classes: "js-postcode-lookup button-secondary postcode-lookup",
+    type: "button"
+  }) }}
+</div>

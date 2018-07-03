@@ -38,7 +38,6 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
-console.log(locales)
   filters.translate = t => locales.en_gb[t] ? locales.en_gb[t] : t;
   // filters.translate = function(t) {
   //   return 'he;lo';

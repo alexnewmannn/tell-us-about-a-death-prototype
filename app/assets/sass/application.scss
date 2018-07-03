@@ -8,6 +8,7 @@ $govuk-global-styles: true;
 @import 'patterns/check-your-answers';
 @import 'patterns/related-items';
 @import 'patterns/task-list';
+@import 'patterns/global-nav';
 
 //cookie-banner
 @import "../../../docs/assets/sass/cookie-banner";
@@ -97,4 +98,97 @@ article {
   margin-left: -20px;
   position: relative;
   top: -20px;
+}
+
+.search-group {
+  .govuk-form-group {
+    margin: 8px 0 0;
+  }
+
+  .button-search {
+    @include govuk-focusable;
+
+    background: govuk-colour("blue") url('/public/images/search.png') no-repeat center center;
+    background-position: 85% 50%;
+    background-size: 80px;
+    border: 0;
+    margin-right: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    text-indent: -100px;
+
+    &:hover, &:focus {
+      cursor: pointer;
+      background-color: $govuk-link-hover-colour;
+    }
+  }
+}
+
+.search-form {
+  @include govuk-clearfix;
+
+  display: block;
+
+  .govuk-form-group,
+  .button-search {
+    float: left;
+  }
+
+  .button-search {
+    margin-top: 8px;
+  }
+}
+
+.button-secondary {
+  background-color: govuk-colour("light-blue");
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: govuk-colour("blue");
+  }
+}
+
+.test {
+  background: blue;
+}
+
+.postcode-group {
+  @include govuk-clearfix;
+
+  .govuk-form-group {
+    float: left;
+  }
+}
+
+.postcode-lookup {
+  float: left;
+  margin-left: 15px;
+  margin-top: 25px;
+  width: auto;
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: 30px;
+  }
+}
+
+legend {
+  .govuk-hint {
+    margin-bottom: 0;
+  }
+}
+
+.inset-address {
+  padding: 15px 0 0 15px;
+  border-left: 4px solid govuk-colour("grey-2");
+}
+
+.address-group {
+  margin-bottom: 20px;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 30px;
+  }
 }

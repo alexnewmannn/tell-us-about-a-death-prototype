@@ -136,10 +136,6 @@ app.locals.promoMode = promoMode
 app.locals.releaseVersion = 'v' + releaseVersion
 app.locals.serviceName = config.serviceName
 app.locals.latestPrototypes = custom;
-// app.locals.translate = (t => {
-//   console.log(t)
-//   return true;
-// }/*locales.en_gb[t] ? locales.en_gb[t] : t*/)
 
 // Support session data
 app.use(session({

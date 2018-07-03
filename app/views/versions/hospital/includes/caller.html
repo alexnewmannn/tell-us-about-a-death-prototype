@@ -1,0 +1,179 @@
+{% from "input/macro.njk" import govukInput %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from 'radios/macro.njk' import govukRadios %}
+{% from "button/macro.njk" import govukButton %}
+
+<section class="govuk-tabs__panel" id="caller-tab">
+  <div class="tabs-panel-inner">
+    <h2 class="govuk-heading-m">{{"caller_details_heading" | translate}}</h2>
+    <form method="post" autocomplete="off">
+      {{ govukInput({
+        label: {
+          text: "full_name" | translate
+        },
+        id: "caller-full-name",
+        name: "caller-full-name",
+        classes: "govuk-!-width-one-half"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "phone_number" | translate
+        },
+        id: "caller-phone-number",
+        name: "caller-phone-number",
+        classes: "govuk-!-width-one-half"
+      }) }}
+
+      {% set prefix = "caller" %}
+      {% include "includes/address-lookup.html" %}
+
+      {{ govukInput({
+        label: {
+          text: "leaflet_code" | translate
+        },
+        hint: {
+          text: "leaflet_code_hint" | translate | safe
+        },
+        id: "leaflet-code",
+        name: "leaflet-code",
+        classes: "govuk-!-width-one-quarter"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "caller_relationship" | translate
+        },
+        id: "caller-relationship",
+        name: "caller-relationship",
+        classes: "govuk-!-width-one-half"
+      }) }}
+
+      {% set isSpouseHtml %}
+        {{ govukInput({
+          label: {
+            text: "national_insurance" | translate
+          },
+          id: "caller-national-insurance",
+          name: "caller-national-insurance"
+        }) }}
+      {% endset -%}
+
+      {% set isNotSpouseHtml %}
+        {% call govukFieldset({
+          legend: {
+            text: "Who is the surviving spouse?",
+            classes: "govuk-fieldset__legend--s",
+            isPageHeading: false
+          }
+        }) %}
+          {{ govukInput({
+            label: {
+              text: "full_name" | translate
+            },
+            id: "spouse-full-name",
+            name: "spouse-full-name"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "phone_number" | translate
+            },
+            id: "spouse-phone-number",
+            name: "spouse-phone-number"
+          }) }}
+
+          {% set prefix = "spouse" %} <!-- Need to add details to a parital too -->
+          {% include "includes/find-address.html" %}
+        {% endcall %}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "is-caller-spouse-conditional",
+        name: "is-caller-spouse",
+        fieldset: {
+          legend: {
+            text: "Is the caller the surviving spouse?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "true",
+            text: "Yes",
+            conditional: {
+              html: isSpouseHtml
+            }
+          },
+          {
+            value: "false",
+            text: "No",
+            conditional: {
+              html: isNotSpouseHtml
+            }
+          }
+        ]
+      }) }}
+
+      {% set isNotExecutorHtml %}
+        {% call govukFieldset({
+          legend: {
+            text: "Who is the executor?",
+            classes: "govuk-fieldset__legend--s",
+            isPageHeading: false
+          }
+        }) %}
+          {{ govukInput({
+            label: {
+              text: "full_name" | translate
+            },
+            id: "executor-full-name",
+            name: "executor-full-name"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "phone_number" | translate
+            },
+            id: "executor-phone-number",
+            name: "executor-phone-number"
+          }) }}
+
+          {% set prefix = "executor" %} <!-- Need to add details to a parital too -->
+          {% include "includes/find-address.html" %}
+        {% endcall %}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "is-caller-executor-conditional",
+        name: "is-caller-executor",
+        fieldset: {
+          legend: {
+            text: "Is the caller dealing with the estate?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "true",
+            text: "Yes"
+          },
+          {
+            value: "false",
+            text: "No",
+            conditional: {
+              html: isNotExecutorHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue",
+        id: "continue-to-deceased"
+      }) }}
+    </form>
+  </div>
+</section>

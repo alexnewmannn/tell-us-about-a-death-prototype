@@ -1,10 +1,18 @@
 const fs = require('fs');
 const process = require('process');
 const folder = `${process.cwd()}/app/views/versions`;
-const nunjucks = require('nunjucks');
 const isDirectory = (path => fs.statSync(path).isDirectory());
 const flattenArray = (files => [].concat.apply([], files));
+/**
+ * Reads the file and returns a stringified version if its an index page
+ * @type {string}
+*/
+const readFile = ((path) => path.includes('index.html') ? fs.readFileSync(path).toString() : false);
 
+/**
+ * Takes a path and returns an array of all files within the given path
+ * @type {array}
+*/
 const readDirectory = (path) => {
   if (isDirectory(path)) {
     const folders = fs.readdirSync(path);
@@ -15,6 +23,10 @@ const readDirectory = (path) => {
   return [];
 };
 
+/**
+ * Takes a file path, reads the file and returns the date found within the file
+ * @type {number}
+*/
 const getDate = (f) => {
   const file = readFile(f);
   if (file) {
@@ -28,14 +40,10 @@ const getDate = (f) => {
   return null;
 };
 
-const readFile = (path) => {
-  if (path.includes('index.html')) {
-    const file = fs.readFileSync(path).toString();
-    return file;
-  }
-  return false;
-};
-
-const fileContents = readDirectory(folder).filter(Boolean).sort((a, b) => getDate(b) - getDate(a));
+/**
+ * Sorts all index.html files within the given folder and returns the file paths
+ * @type {array}
+*/
+const fileContents = readDirectory(folder).filter(Boolean).filter(readFile).sort((a, b) => getDate(b) - getDate(a));
 
 module.exports = fileContents;

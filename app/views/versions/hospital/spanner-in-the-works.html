@@ -1,1 +1,44 @@
-<h1>hi</h1>
+{% extends "layout-full-width.html" %}
+{% set agent = true %}
+{% block page_title %} Tell us about a death {% endblock %}
+{% block beforeContent %}
+  {% set globalNavClasses = "active" %}
+  {% include "includes/global-nav.html" %}
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!--new tabs-->
+      <div class="govuk-tabs govuk-!-margin-bottom-6" data-module="tabs">
+        <h2 class="govuk-tabs__title">
+          Contents
+        </h2>
+
+        <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#caller-tab">
+                Caller
+              </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#deceased-trace-tab">
+                Deceased trace
+              </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#deceased-details-tab">
+                Deceased's Personal Details
+              </a>
+          </li>
+        </ul>
+
+        {% include "versions/hospital/includes/caller.html" %}
+        {% include "versions/hospital/includes/deceased-details.html" %}
+        {% include "versions/hospital/includes/deceased-trace.html" %}
+      </div>
+    <!-- end Tabs -->
+    </div>
+  </div>
+
+  {% endblock %}
