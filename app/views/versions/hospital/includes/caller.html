@@ -13,7 +13,7 @@
         },
         id: "caller-full-name",
         name: "caller-full-name",
-        classes: "govuk-!-width-one-half"
+        classes: "govuk-!-width-two-thirds"
       }) }}
 
       {{ govukInput({
@@ -22,7 +22,7 @@
         },
         id: "caller-phone-number",
         name: "caller-phone-number",
-        classes: "govuk-!-width-one-half"
+        classes: "govuk-!-width-two-thirds"
       }) }}
 
       {% set prefix = "caller" %}
@@ -46,7 +46,7 @@
         },
         id: "caller-relationship",
         name: "caller-relationship",
-        classes: "govuk-!-width-one-half"
+        classes: "govuk-!-width-two-thirds"
       }) }}
 
       {% set isSpouseHtml %}
@@ -55,7 +55,8 @@
             text: "national_insurance" | translate
           },
           id: "caller-national-insurance",
-          name: "caller-national-insurance"
+          name: "caller-national-insurance",
+          classes: "govuk-!-width-two-thirds"
         }) }}
       {% endset -%}
 
@@ -65,14 +66,16 @@
             text: "Who is the surviving spouse?",
             classes: "govuk-fieldset__legend--s",
             isPageHeading: false
-          }
+          },
+          classes: "spouse-group"
         }) %}
           {{ govukInput({
             label: {
               text: "full_name" | translate
             },
             id: "spouse-full-name",
-            name: "spouse-full-name"
+            name: "spouse-full-name",
+            classes: "govuk-!-width-two-thirds"
           }) }}
 
           {{ govukInput({
@@ -80,11 +83,14 @@
               text: "phone_number" | translate
             },
             id: "spouse-phone-number",
-            name: "spouse-phone-number"
+            name: "spouse-phone-number",
+            classes: "govuk-!-width-two-thirds"
           }) }}
 
-          {% set prefix = "spouse" %} <!-- Need to add details to a parital too -->
-          {% include "includes/find-address.html" %}
+          <div class="govuk-form-group">
+            {% set prefix = "spouse" %}
+            {% include "includes/address-lookup.html" %}
+          </div>
         {% endcall %}
       {% endset -%}
 
@@ -122,14 +128,16 @@
             text: "Who is the executor?",
             classes: "govuk-fieldset__legend--s",
             isPageHeading: false
-          }
+          },
+          classes: "executor-group"
         }) %}
           {{ govukInput({
             label: {
               text: "full_name" | translate
             },
             id: "executor-full-name",
-            name: "executor-full-name"
+            name: "executor-full-name",
+            classes: "govuk-!-width-two-thirds"
           }) }}
 
           {{ govukInput({
@@ -137,11 +145,14 @@
               text: "phone_number" | translate
             },
             id: "executor-phone-number",
-            name: "executor-phone-number"
+            name: "executor-phone-number",
+            classes: "govuk-!-width-two-thirds"
           }) }}
 
-          {% set prefix = "executor" %} <!-- Need to add details to a parital too -->
-          {% include "includes/find-address.html" %}
+          <div class="govuk-form-group">
+            {% set prefix = "executor" %}
+            {% include "includes/address-lookup.html" %}
+          </div>
         {% endcall %}
       {% endset -%}
 

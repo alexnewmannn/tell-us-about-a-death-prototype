@@ -143,6 +143,7 @@ article {
 
 .button-secondary {
   background-color: govuk-colour("light-blue");
+  color: govuk-colour("black");
 
   &:hover,
   &:focus,
@@ -158,7 +159,7 @@ article {
 .postcode-group {
   @include govuk-clearfix;
 
-  .govuk-form-group {
+  > .govuk-form-group {
     float: left;
   }
 }
@@ -167,11 +168,17 @@ article {
   float: left;
   margin-left: 15px;
   margin-top: 25px;
+  margin: 25px 0 10px 15px;
   width: auto;
 
   @include govuk-media-query($from: tablet) {
     margin-top: 30px;
   }
+}
+
+.address-details {
+  float: left;
+  width: 100%;
 }
 
 legend {
@@ -190,5 +197,12 @@ legend {
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 30px;
+  }
+}
+
+.executor-group,
+.spouse-group {
+  legend {
+    display: none;
   }
 }

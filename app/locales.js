@@ -18,7 +18,15 @@ const locales = {
     fake_address: 'Benton Park View, Newcastle upon Tyne, NE98 1YX',
     find_address: 'Find address',
     select_address: 'Select an address',
-    address_hint: 'Ask the caller for their address so we can contact them if we need to.'
+    address_hint: 'Ask the caller for their address so we can contact them if we need to.',
+    dob_title: 'Date of birth',
+    dob_hint: 'For example, 31 3 1980',
+    security_title: 'Is there a record of the person in Searchlight?',
+    security_questions_title: 'Further security questions',
+    security_q1: 'What was the first line of their address?',
+    security_q2: 'What was their postcode?',
+    security_q3: 'What was their telephone or mobile number?',
+    security_q4: 'What was their marital status?',
   }
 };
 
