@@ -4,8 +4,11 @@ const locales = {
     phone_number: 'Phone Number',
     address: 'Address',
     caller_address_hint: 'Ask the caller for their address so we can contact them if we need to.',
-    caller_relationship: 'Relationship to Deceased',
+    caller_relationship: 'Relationship to deceased',
     caller_details_heading: `Caller's details`,
+    deceased_details_heading: `Deceased’s personal details`,
+    deceased_trace_heading: 'Deceased trace',
+    other_information_heading: 'Other information',
     leaflet_code: 'Leaflet Code',
     leaflet_code_hint: `This a 6 digit code &ndash; for example, ‘AB123C’. <br>It’s on the leaflet, at the bottom.`,
     postcode: 'Postcode',
@@ -20,6 +23,7 @@ const locales = {
     select_address: 'Select an address',
     address_hint: 'Ask the caller for their address so we can contact them if we need to.',
     dob_title: 'Date of birth',
+    dod_title: 'Date of death',
     dob_hint: 'For example, 31 3 1980',
     security_title: 'Is there a record of the person in Searchlight?',
     security_questions_title: 'Further security questions',
@@ -27,6 +31,17 @@ const locales = {
     security_q2: 'What was their postcode?',
     security_q3: 'What was their telephone or mobile number?',
     security_q4: 'What was their marital status?',
+    hospital_question: 'Did they die in hospital?',
+    hospital_location: 'Which hospital?',
+    hospital_duration: 'How long were they in hospital?',
+    death_location: 'Where did they die?',
+    caller_same_address: 'Same address as caller?',
+    deceased_address: 'What was their address?',
+    driving_license_question: 'Did the deceased have a driving license?',
+    vehicle_ownership_question: 'Did the deceased own any vehicles?',
+    passport_question: 'Did the deceased have a passport?',
+    save_continue: 'Save and continue',
+    final_step_continue: 'Check all information and continue'
   }
 };
 

@@ -152,15 +152,12 @@ article {
   }
 }
 
-.test {
-  background: blue;
-}
-
 .postcode-group {
   @include govuk-clearfix;
 
   > .govuk-form-group {
     float: left;
+    margin-bottom: 10px;
   }
 }
 
