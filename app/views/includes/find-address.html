@@ -4,8 +4,9 @@
       text: "postcode" | translate
     },
     classes: "govuk-input--width-10",
-    id:  prefix + "-potscode-lookup",
-    name:  prefix + "-potscode"
+    id:  prefix + "-postcode-lookup",
+    name:  prefix + "-postcode-lookup",
+    value: session[prefix + "-postcode-lookup"]
   }) }}
 
   {{ govukButton({

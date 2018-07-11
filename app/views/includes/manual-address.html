@@ -4,7 +4,8 @@
   },
   id:  prefix + "-line-1",
   name:  prefix + "-line-1",
-  classes: "govuk-!-width-two-thirds"
+  classes: "govuk-!-width-two-thirds",
+  value: session[prefix + "-line-1"]
 }) }}
 
 {{ govukInput({
@@ -14,7 +15,8 @@
   },
   id:  prefix + "-line-2",
   name:  prefix + "-line-2",
-  classes: "govuk-!-width-two-thirds"
+  classes: "govuk-!-width-two-thirds",
+  value: session[prefix + "-line-2"]
 }) }}
 
 {{ govukInput({
@@ -23,7 +25,8 @@
   },
   id:  prefix + "-town-city",
   name:  prefix + "-town-city",
-  classes: "govuk-!-width-two-thirds"
+  classes: "govuk-!-width-two-thirds",
+  value: session[prefix + "-town-city"]
 }) }}
 
 {{ govukInput({
@@ -32,14 +35,16 @@
   },
   id:  prefix + "-county",
   name:  prefix + "-county",
-  classes: "govuk-!-width-two-thirds"
+  classes: "govuk-!-width-two-thirds",
+  value: session[prefix + "-county"]
 }) }}
 
 {{ govukInput({
   label: {
     text: "postcode" | translate
   },
-  id:  prefix + "-potscode",
-  name:  prefix + "-potscode",
-  classes: "govuk-!-width-two-thirds"
+  id:  prefix + "-postcode",
+  name:  prefix + "-postcode",
+  classes: "govuk-!-width-two-thirds",
+  value: session[prefix + "-postcode"]
 }) }}

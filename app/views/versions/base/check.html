@@ -1,0 +1,44 @@
+{% extends "layout-full-width.html" %} {% set agent = true %}
+{% block page_title %} Tell us about a death {% endblock %}
+{% block beforeContent %}
+  {% set globalNavClasses = "" %}
+  {% include "includes/global-nav.html" %}
+  <div class="govuk-width-container">
+    {{ govukBackLink({
+      href: "simple#deceased-details-tab",
+      text: "Back"
+    }) }}
+  </div>
+{% endblock %} {%
+block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{"check_title" | translate}}</h1>
+    <p>{{ "check_description" | translate}} {{session["deceased-full-name"]}}</p>
+
+    {% include "versions/base/includes/check-caller.html" %}
+
+    {% if session['spouse-full-name'] %}
+      {% include "versions/base/includes/check-spouse.html" %}
+    {% endif %}
+
+    {% if session['executor-full-name'] %}
+      {% include "versions/base/includes/check-executor.html" %}
+    {% endif %}
+
+    {% include "versions/base/includes/check-deceased.html" %}
+
+    <h2 class="govuk-heading-m">{{ "complete_application_title" | translate}}</h2>
+    <p>{{ "correct_answers" | translate }}
+
+    {{ govukWarningText({
+      text: "consent_message" | translate,
+      iconFallbackText: "Warning"
+    }) }}
+
+    <a href="confirmation-page" class="govuk-button" role="button">{{"confirm_application" | translate}}</a>
+  </div>
+</div>
+
+{% endblock %}

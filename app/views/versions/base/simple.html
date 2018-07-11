@@ -32,10 +32,11 @@
               </a>
           </li>
         </ul>
-
-        {% include "versions/base/includes/caller.html" %}
-        {% include "versions/base/includes/deceased-trace.html" %}
-        {% include "versions/base/includes/deceased-details.html" %}
+        <form method="post" autocomplete="off" action="check">
+          {% include "versions/base/includes/caller.html" %}
+          {% include "versions/base/includes/deceased-trace.html" %}
+          {% include "versions/base/includes/deceased-details.html" %}
+        </form>
       </div>
     <!-- end Tabs -->
     </div>

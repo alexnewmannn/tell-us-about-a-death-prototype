@@ -1,0 +1,75 @@
+<h2 class="govuk-heading-m">{{ "spouse_details_heading" | translate }}</h2>
+<dl class="app-check-your-answers app-check-your-answers--long">
+  {% if session['spouse-full-name'] %}
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+        {{ "full_name" | translate }}
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{session['spouse-full-name']}}
+      </dd>
+      <dd class="app-check-your-answers__change">
+        <a href="#">
+          Change
+          <span class="govuk-visually-hidden"> {{ "full_name" | translate }}</span>
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+  {%
+    if (session['spouse-line-1']) or (session['spouse-line-2'])
+    or (session['spouse-town-city']) or (session['spouse-county'])
+    or (session['spouse-postcode'])
+  %}
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+        {{ "address" | translate }}
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {% if (session['spouse-line-1']) %}
+          {{session['spouse-line-1']}}
+          <br />
+        {% endif %}
+        {% if (session['spouse-line-2']) %}
+          {{session['spouse-line-2']}}
+          <br />
+        {% endif %}
+        {% if (session['spouse-town-city']) %}
+          {{session['spouse-town-city']}}
+          <br />
+        {% endif %}
+        {% if (session['spouse-county']) %}
+          {{session['spouse-county']}}
+          <br />
+        {% endif %}
+        {% if (session['spouse-postcode']) %}
+          {{session['spouse-postcode']}}
+        {% endif %}
+      </dd>
+      <dd class="app-check-your-answers__change">
+        <a href="#">
+          Change
+          <span class="govuk-visually-hidden"> {{ "address" | translate }}</span>
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+  {% if (session['spouse-phone-number']) %}
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+        {{ "phone_number" | translate }}
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{session['spouse-phone-number']}}
+      </dd>
+      <dd class="app-check-your-answers__change">
+        <a href="#">
+          Change
+          <span class="govuk-visually-hidden"> {{ "phone_number" | translate }}</span>
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+</dl>
