@@ -1,0 +1,121 @@
+{% extends "layout-full-width.html" %} {% set agent = true %}
+{% block page_title %} {{"app_title" | translate}} {% endblock %}
+{% block beforeContent %}
+  {% set globalNavClasses = "" %}
+  {% include "includes/global-nav.html" %}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{"deceased_information_heading" | translate }}</h1>
+      <p>You are reviewing details about the death of {{entry.name}}.</p>
+
+      <h2 class="govuk-heading-m">{{"deceased_details_heading" | translate }}</h2>
+      {% set addressHtml %}
+        {{entry.line1}}<br />
+        {{entry.town}} <br />
+        {{entry.county}} <br />
+        {{entry.postcode}}
+      {% endset %}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "full_name" | translate
+            },
+            {
+              text: entry.name
+            }
+          ],
+          [
+            {
+              text: "dod_title" | translate
+            },
+            {
+              text: entry.dateOfDeath
+            }
+          ],
+          [
+            {
+              text: "national_insurance" | translate
+            },
+            {
+              text: entry.nino
+            }
+          ],
+          [
+            {
+              text: "dob_title" | translate
+            },
+            {
+              text: entry.dateOfBirth
+            }
+          ],
+          [
+            {
+              text: "address" | translate
+            },
+            {
+              text: addressHtml | safe
+            }
+          ]
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">{{ "notifier_details_heading" | translate }}</h2>
+      {% set notifierAddressHtml %}
+        {{entry.notifier.line1}}<br />
+        {{entry.notifier.town}} <br />
+        {{entry.notifier.county}} <br />
+        {{entry.notifier.postcode}}
+      {% endset %}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "full_name" | translate
+            },
+            {
+              text: entry.notifier.name
+            }
+          ],
+          [
+            {
+              text: "leaflet_code" | translate
+            },
+            {
+              text: entry.notifier.leafletCode
+            }
+          ],
+          [
+            {
+              text: "caller_relationship" | translate
+            },
+            {
+              text: entry.notifier.relationshipToDeceased
+            }
+          ],
+          [
+            {
+              text: "phone_number" | translate
+            },
+            {
+              text: entry.notifier.phoneNumber
+            }
+          ],
+          [
+            {
+              text: "address" | translate
+            },
+            {
+              text: notifierAddressHtml | safe
+            }
+          ]
+        ]
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}

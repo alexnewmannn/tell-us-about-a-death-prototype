@@ -1,16 +1,16 @@
 {% extends "layout-full-width.html" %} {% set agent = true %}
-{% block page_title %} Tell us about a death {% endblock %}
+{% block page_title %} {{"app_title" | translate}} {% endblock %}
 {% block beforeContent %}
   {% set globalNavClasses = "" %}
   {% include "includes/global-nav.html" %}
   <div class="govuk-width-container">
     {{ govukBackLink({
-      href: "simple#deceased-details-tab",
+      href: "new-notification#deceased-details-tab",
       text: "Back"
     }) }}
   </div>
-{% endblock %} {%
-block content %}
+{% endblock %}
+{%block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -37,7 +37,7 @@ block content %}
       iconFallbackText: "Warning"
     }) }}
 
-    <a href="confirmation-page" class="govuk-button" role="button">{{"confirm_application" | translate}}</a>
+    <a href="complete" class="govuk-button" role="button">{{"confirm_application" | translate}}</a>
   </div>
 </div>
 

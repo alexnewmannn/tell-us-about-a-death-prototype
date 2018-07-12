@@ -1,10 +1,10 @@
 <nav class="navigation-global">
   <ul>
     <li>
-      <a href="#" class="{{globalNavClasses}}" aria-current="page">New Notification</a>
+      <a href="new-notification" class="{{globalNavClasses}}" aria-current="page">New notification</a>
     </li>
     <li class="search-group">
-      <form class="search-form">
+      <form class="search-form" method="get" action="search-results">
         {{ govukInput({
           label: {
             text: "national_insurance_number" | translate,

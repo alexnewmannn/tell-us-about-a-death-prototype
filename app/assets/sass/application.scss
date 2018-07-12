@@ -197,9 +197,23 @@ legend {
   }
 }
 
-.executor-group,
-.spouse-group {
-  legend {
-    display: none;
+.spouse-group,
+.executor-group {
+  .address-group {
+    legend {
+      display: none;
+    }
   }
+}
+
+.govuk-radios__conditional {
+  label {
+    @include govuk-typography-weight-regular($important: true);
+  }
+}
+
+.highlight {
+  border-bottom: 3px solid govuk-colour("yellow");
+  background-color: #fff2d3;
+  text-decoration: none;
 }

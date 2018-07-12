@@ -1,4 +1,4 @@
-{% from "tabs/macro.njk" import govukTabs %} {% extends "layout-full-width.html" %} {% set agent = true %} {% block page_title %} Tell us about a death {% endblock %}{% block beforeContent %}{% set globalNavClasses = "active" %}{% include "includes/global-nav.html" %}{% endblock %}
+{% from "tabs/macro.njk" import govukTabs %} {% extends "layout-full-width.html" %} {% set agent = true %} {% block page_title %} {{"app_title" | translate}} {% endblock %}{% block beforeContent %}{% set globalNavClasses = "active" %}{% include "includes/global-nav.html" %}{% endblock %}
 
 {% block content %}
   {% set callerHtml %}
@@ -14,6 +14,7 @@
   {% endset %}
 
   <div class="govuk-grid-row">
+    <form method="post" action="check">
     {{ govukTabs({
       classes: "govuk-grid-column-two-thirds",
       items: [
@@ -25,14 +26,14 @@
           }
         },
         {
-          label: "Deceased trace",
+          label: "deceased_trace_tab" | translate,
           id: "deceased-trace-tab",
           panel: {
             html: deceasedTraceHtml
           }
         },
         {
-          label: "Deceased's personal details",
+          label: "deceased_details_tab" | translate,
           id: "deceased-details-tab",
           panel: {
             html: deceasedDetailsHtml
@@ -40,5 +41,6 @@
         }
       ]
     }) }}
+    </form>
   </div>
 {% endblock %}
