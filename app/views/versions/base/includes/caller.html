@@ -3,8 +3,6 @@
 {% from 'radios/macro.njk' import govukRadios %}
 {% from "button/macro.njk" import govukButton %}
 
-<section class="govuk-tabs__panel" id="caller-tab">
-  <div class="tabs-panel-inner">
     <h2 class="govuk-heading-m">{{"caller_details_heading" | translate}}</h2>
     {{ govukInput({
       label: {
@@ -230,5 +228,3 @@
     }) }}
 
     <a href="#deceased-trace-tab" class="govuk-button">{{"save_continue" | translate}}</a>
-  </div>
-</section>
