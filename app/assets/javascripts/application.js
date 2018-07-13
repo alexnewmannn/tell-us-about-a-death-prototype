@@ -6,7 +6,11 @@ if (window.console && window.console.info) {
 }
 
 $(document).ready(function () {
-
-  // add code here
-
+  const hospitalLocationEl = document.getElementById('hospital-location');
+  if (hospitalLocationEl) {
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: hospitalLocationEl,
+      classes: "govuk-!-width-two-thirds"
+    });
+  }
 })

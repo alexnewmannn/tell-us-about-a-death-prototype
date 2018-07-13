@@ -10,11 +10,11 @@
   {% endset %}
 
   {% set deceasedDetailsHtml %}
-    {% include "versions/base/includes/deceased-details.html" %}
+    {% include "versions/hospital/includes/deceased-details-autocomplete.html" %}
   {% endset %}
 
   <div class="govuk-grid-row">
-    <form method="post" action="check">
+    <form method="post" action="../base/check">
       {{ govukTabs({
         classes: "govuk-grid-column-two-thirds",
         items: [
@@ -22,7 +22,7 @@
             label: "Caller",
             id: "caller-tab",
             panel: {
-              html: callerHtml
+              html: deceasedDetailsHtml
             }
           },
           {

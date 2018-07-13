@@ -1,0 +1,220 @@
+<h2 class="govuk-heading-m">{{"deceased_details_heading" | translate}}</h2>
+
+{{ govukDateInput({
+  id: "deceased-dod",
+  name: "deceased-dod",
+  fieldset: {
+    legend: {
+      text: "dod_title" | translate,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      name: "day",
+      value: session['deceased-dod-day']
+    },
+    {
+      name: "month",
+      value: session['deceased-dod-month']
+    },
+    {
+      name: "year",
+      value: session['deceased-dod-year']
+    }
+  ]
+  })
+}}
+{% set hospitalInfoHtml %}
+  {% set hospitalValues = [{value: '', text: ''}] %}
+  {% for hospital in hospitals %}
+    {% set hospitalValues = (hospitalValues.push({value: hospital.OrganisationName, text: hospital.OrganisationName}), hospitalValues) %}
+  {% endfor %}
+
+  {{ govukSelect({
+    id: "hospital-location",
+    name: "hospital-location",
+    label: {
+      text: "hospital_location" | translate
+    },
+    classes: "govuk-!-width-two-thirds",
+    items: hospitalValues
+  }) }}
+
+  {{ govukInput({
+    id: "hospital-duration",
+    name: "hospital-duration",
+    classes: "govuk-!-width-two-thirds",
+    label: {
+      text: "hospital_duration" | translate,
+      classes: "govuk-!-font-weight-bold",
+      attributes: {
+        id: "hospital-duration-group"
+      }
+    },
+    value: session['hospital-duration']
+  }) }}
+{% endset -%}
+
+{% set deathLocationHtml %}
+  {% set prefix = "death-location" %}
+  {% call govukFieldset({
+    classes: 'address-group',
+    legend: {
+      text: "death_location" | translate,
+      classes: "govuk-fieldset__legend--s",
+      isPageHeading: false
+    }
+  }) %}
+    {% include "includes/find-address.html" %}
+  {% endcall %}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "hospital-death-conditional",
+  name: "hospital-death",
+  fieldset: {
+    legend: {
+      text: "hospital_question" | translate,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: true,
+      text: "Yes",
+      conditional: {
+        html: hospitalInfoHtml
+      },
+      checked: true if session['hospital-death'] == 'true' else false
+    },
+    {
+      value: false,
+      text: "No",
+      conditional: {
+        html: deathLocationHtml
+      },
+      checked: true if session['hospital-death'] == 'false' else false
+    }
+  ]
+}) }}
+
+{% set deceasedAddressHtml %}
+  {% set prefix = "deceased-address" %}
+  {% call govukFieldset({
+    classes: 'address-group',
+    legend: {
+      text: "deceased_address" | translate,
+      classes: "govuk-fieldset__legend--s",
+      isPageHeading: false
+    }
+  }) %}
+    {% include "includes/find-address.html" %}
+  {% endcall %}
+{% endset %}
+
+{{ govukRadios({
+  idPrefix: "deceased-address-conditional",
+  name: "deceased-address",
+  fieldset: {
+    legend: {
+      text: "caller_same_address" | translate,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: true,
+      text: "Yes",
+      checked: true if session['deceased-address'] == 'true' else false
+    },
+    {
+      value: false,
+      text: "No",
+      conditional: {
+        html: deceasedAddressHtml
+      }, checked: true if session['deceased-address'] == 'false' else false
+    }
+  ]
+}) }}
+
+<h2 class="govuk-heading-m">{{"other_information_heading" | translate}}</h2>
+{{ govukRadios({
+  idPrefix: "driving-license",
+  name: "driving-license",
+  fieldset: {
+    legend: {
+      text: "driving_license_question" | translate,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: true,
+      text: "Yes",
+      checked: true if session['driving-license'] == 'true' else false
+    },
+    {
+      value: false,
+      text: "No",
+      checked: true if session['driving-license'] == 'false' else false
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  idPrefix: "vehicle-ownership",
+  name: "vehicle-ownership",
+  fieldset: {
+    legend: {
+      text: "vehicle_ownership_question" | translate,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: true,
+      text: "Yes",
+      checked: true if session['vehicle-ownership'] == 'true' else false
+    },
+    {
+      value: false,
+      text: "No",
+      checked: true if session['vehicle-ownership'] == 'false' else false
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  idPrefix: "passport-number",
+  name: "passport-number",
+  fieldset: {
+    legend: {
+      text: "passport_question" | translate,
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: true,
+      text: "Yes",
+      checked: true if session['passport-number'] == 'true' else false
+    },
+    {
+      value: false,
+      text: "No",
+      checked: true if session['passport-number'] == 'false' else false
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "final_step_continue" | translate,
+  id: "continue-to-deceased"
+}) }}

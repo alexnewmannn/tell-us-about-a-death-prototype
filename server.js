@@ -12,6 +12,7 @@ const session = require('express-session')
 
 // Local dependencies
 const config = require('./app/config.js')
+const hospitals = require('./app/hospitals.json')
 const documentationRoutes = require('./docs/documentation_routes.js')
 const packageJson = require('./package.json')
 const routes = require('./app/routes.js')
@@ -136,6 +137,12 @@ app.locals.promoMode = promoMode
 app.locals.releaseVersion = 'v' + releaseVersion
 app.locals.serviceName = config.serviceName
 app.locals.latestPrototypes = custom;
+const hospitalResponse = hospitals.sort((a, b) => {
+  var textA = a.OrganisationName.toUpperCase();
+  var textB = b.OrganisationName.toUpperCase();
+  return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+});
+app.locals.hospitals = hospitalResponse;
 
 // Support session data
 app.use(session({
