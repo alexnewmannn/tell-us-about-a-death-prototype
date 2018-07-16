@@ -16,6 +16,21 @@ router.get('*/search-results', (req, res, next) => {
   next();
 })
 
+router.get('*/deceased-trace', (req, res, next) => {
+  res.locals.startTab = 'trace';
+  res.render(req.params[0].slice(1));
+})
+
+router.get('*/deceased-details', (req, res, next) => {
+  res.locals.startTab = 'details';
+  res.render(req.params[0].slice(1));
+})
+
+router.get('*/caller', (req, res, next) => {
+  res.locals.startTab = 'caller';
+  res.render(req.params[0].slice(1));
+})
+
 router.get('*/entry/*', (req, res) => {
   res.locals.entry = search(req.params[1]);
   res.render('versions/base/entry.html');

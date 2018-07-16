@@ -10,7 +10,8 @@ $(document).ready(function () {
   if (hospitalLocationEl) {
     accessibleAutocomplete.enhanceSelectElement({
       selectElement: hospitalLocationEl,
-      classes: "govuk-!-width-two-thirds"
+      classes: "govuk-!-width-two-thirds",
+      name: "hospital-location-autocomplete"
     });
   }
 })

@@ -1,0 +1,26 @@
+{{ govukTabs({
+  classes: "govuk-grid-column-two-thirds",
+  items: [
+    {
+      label: "Caller",
+      id: "caller-tab",
+      panel: {
+        html: callerHtml
+      }
+    },
+    {
+      label: "deceased_trace_tab" | translate,
+      id: "deceased-trace-tab",
+      panel: {
+        html: deceasedTraceHtml
+      }
+    },
+    {
+      label: "deceased_details_tab" | translate,
+      id: "deceased-details-tab",
+      panel: {
+        html: deceasedDetailsHtml
+      }
+    }
+  ]
+}) }}

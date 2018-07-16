@@ -37,7 +37,7 @@ const locales = {
     hospital_location: 'Which hospital did they die in?',
     hospital_question: 'Did they die in hospital?',
     leaflet_code: 'Leaflet Code',
-    leaflet_code_hint: 'This a 6 digit code &ndash; for example, ‘AB123C’. <br>It’s at the bottom of the leaflet.',
+    leaflet_code_hint: 'This is a 6 digit code &ndash; for example, ‘AB123C’. <br>It’s at the bottom of the leaflet.',
     national_insurance: 'National Insurance number',
     no_results_found: 'Sorry, no results were found.',
     notifier_details_heading: `Notifier's details`,
