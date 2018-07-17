@@ -51,6 +51,23 @@
     </div>
   {% endif %}
 
+  {% if session['deceased-marital-status'] %}
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+        {{ "marital_status" | translate }}
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{session['deceased-marital-status']}}
+      </dd>
+      <dd class="app-check-your-answers__change">
+        <a href="new-notification/deceased-trace#deceased-marital-status-group">
+          {{ "change" | translate }}
+          <span class="govuk-visually-hidden"> {{ "marital_status" | translate }}</span>
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
   {% if (session['deceased-dod-day']) and (session['deceased-dod-month']) and (session['deceased-dod-year']) %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">

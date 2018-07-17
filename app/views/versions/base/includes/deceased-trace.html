@@ -57,6 +57,20 @@
   })
 }}
 
+{{ govukInput({
+  label: {
+    text: "marital_status" | translate,
+    classes: "govuk-!-font-weight-bold js-hidden",
+    attributes: {
+      id: "deceased-marital-status-group"
+    }
+  },
+  id: "deceased-marital-status",
+  name: "deceased-marital-status",
+  classes: "govuk-!-width-two-thirds js-hidden",
+  value: session["deceased-marital-status"]
+}) }}
+
 {% set securityPassedHtml %}
   {{ govukCheckboxes({
     idPrefix: "security",

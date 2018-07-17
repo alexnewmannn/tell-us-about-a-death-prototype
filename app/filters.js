@@ -39,9 +39,7 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
   filters.translate = t => locales.en_gb[t] ? locales.en_gb[t] : t;
-  // filters.translate = function(t) {
-  //   return 'he;lo';
-  // }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
