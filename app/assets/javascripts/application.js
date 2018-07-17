@@ -44,6 +44,12 @@ $(document).ready(function () {
         if (maritalStatusEl && maritalStatusEl.value) {
           maritalStatusEl.classList.remove('js-hidden');
           maritalStatusEl.previousElementSibling.classList.remove('js-hidden');
+
+          const maritalStatusSecurityEl = document.querySelector('[value="security-marital-status"]');
+          if (maritalStatusSecurityEl) {
+            maritalStatusSecurityEl.setAttribute('disabled', '')
+            maritalStatusSecurityEl.checked = true;
+          }
         }
       }
 
@@ -79,10 +85,10 @@ $(document).ready(function () {
         const value = event.target.value.toLowerCase().replace(/(\s)|(-)/g, '').trim();
         // a relationship to the deceased that we care about
         if (isValidRelationship(value)) {
-          showMaritalStatus();
           if (maritalStatusEl) {
             maritalStatusEl.value = mapRelationship(value);
           }
+          showMaritalStatus();
         }
       });
     }
