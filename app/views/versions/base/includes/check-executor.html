@@ -1,12 +1,12 @@
 <h2 class="govuk-heading-m">{{ "executor_details_heading" | translate }}</h2>
 <dl class="app-check-your-answers app-check-your-answers--long">
-  {% if session['executor-full-name'] %}
+  {% if data['executor-full-name'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "full_name" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['executor-full-name']}}
+        {{data['executor-full-name']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="#">
@@ -18,33 +18,33 @@
   {% endif %}
 
   {%
-    if (session['executor-line-1']) or (session['executor-line-2'])
-    or (session['executor-town-city']) or (session['executor-county'])
-    or (session['executor-postcode'])
+    if (data['executor-line-1']) or (data['executor-line-2'])
+    or (data['executor-town-city']) or (data['executor-county'])
+    or (data['executor-postcode'])
   %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "address" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {% if (session['executor-line-1']) %}
-          {{session['executor-line-1']}}
+        {% if (data['executor-line-1']) %}
+          {{data['executor-line-1']}}
           <br />
         {% endif %}
-        {% if (session['executor-line-2']) %}
-          {{session['executor-line-2']}}
+        {% if (data['executor-line-2']) %}
+          {{data['executor-line-2']}}
           <br />
         {% endif %}
-        {% if (session['executor-town-city']) %}
-          {{session['executor-town-city']}}
+        {% if (data['executor-town-city']) %}
+          {{data['executor-town-city']}}
           <br />
         {% endif %}
-        {% if (session['executor-county']) %}
-          {{session['executor-county']}}
+        {% if (data['executor-county']) %}
+          {{data['executor-county']}}
           <br />
         {% endif %}
-        {% if (session['executor-postcode']) %}
-          {{session['executor-postcode']}}
+        {% if (data['executor-postcode']) %}
+          {{data['executor-postcode']}}
         {% endif %}
       </dd>
       <dd class="app-check-your-answers__change">
@@ -56,13 +56,13 @@
     </div>
   {% endif %}
 
-  {% if (session['executor-phone-number']) %}
+  {% if (data['executor-phone-number']) %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "phone_number" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['executor-phone-number']}}
+        {{data['executor-phone-number']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="#">

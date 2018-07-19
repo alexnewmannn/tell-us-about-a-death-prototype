@@ -1,12 +1,12 @@
 <h2 class="govuk-heading-m">{{ "caller_details_heading" | translate }}</h2>
 <dl class="app-check-your-answers app-check-your-answers--long">
-  {% if session['caller-full-name'] %}
+  {% if data['caller-full-name'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "full_name" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['caller-full-name']}}
+        {{data['caller-full-name']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification#caller-full-name-group">
@@ -17,13 +17,13 @@
     </div>
   {% endif %}
 
-  {% if session['leaflet-code'] %}
+  {% if data['leaflet-code'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "leaflet_code" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['leaflet-code']}}
+        {{data['leaflet-code']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification#leaflet-code-group">
@@ -34,13 +34,13 @@
     </div>
   {% endif %}
 
-  {% if session['caller-relationship'] %}
+  {% if data['caller-relationship'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "caller_relationship" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['caller-relationship']}}
+        {{data['caller-relationship']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification#caller-relationship-group">
@@ -52,33 +52,33 @@
   {% endif %}
 
   {%
-    if (session['caller-line-1']) or (session['caller-line-2'])
-    or (session['caller-town-city']) or (session['caller-county'])
-    or (session['caller-postcode'])
+    if (data['caller-line-1']) or (data['caller-line-2'])
+    or (data['caller-town-city']) or (data['caller-county'])
+    or (data['caller-postcode'])
   %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "address" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {% if (session['caller-line-1']) %}
-          {{session['caller-line-1']}}
+        {% if (data['caller-line-1']) %}
+          {{data['caller-line-1']}}
           <br />
         {% endif %}
-        {% if (session['caller-line-2']) %}
-          {{session['caller-line-2']}}
+        {% if (data['caller-line-2']) %}
+          {{data['caller-line-2']}}
           <br />
         {% endif %}
-        {% if (session['caller-town-city']) %}
-          {{session['caller-town-city']}}
+        {% if (data['caller-town-city']) %}
+          {{data['caller-town-city']}}
           <br />
         {% endif %}
-        {% if (session['caller-county']) %}
-          {{session['caller-county']}}
+        {% if (data['caller-county']) %}
+          {{data['caller-county']}}
           <br />
         {% endif %}
-        {% if (session['caller-postcode']) %}
-          {{session['caller-postcode']}}
+        {% if (data['caller-postcode']) %}
+          {{data['caller-postcode']}}
         {% endif %}
       </dd>
       <dd class="app-check-your-answers__change">
@@ -90,13 +90,13 @@
     </div>
   {% endif %}
 
-  {% if (session['caller-phone-number']) %}
+  {% if (data['caller-phone-number']) %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "phone_number" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['caller-phone-number']}}
+        {{data['caller-phone-number']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification#caller-phone-number-group">
@@ -107,13 +107,13 @@
     </div>
   {% endif %}
 
-  {% if (session['caller-national-insurance']) %}
+  {% if (data['caller-national-insurance']) %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "national_insurance" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['caller-national-insurance']}}
+        {{data['caller-national-insurance']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification#caller-national-insurance-group">

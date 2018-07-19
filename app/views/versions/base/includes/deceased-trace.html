@@ -10,7 +10,7 @@
   id: "deceased-national-insurance",
   name: "deceased-national-insurance",
   classes: "govuk-!-width-two-thirds",
-  value: session["deceased-national-insurance"]
+  value: data["deceased-national-insurance"]
 }) }}
 
 {{ govukInput({
@@ -24,7 +24,7 @@
   id: "deceased-full-name",
   name: "deceased-full-name",
   classes: "govuk-!-width-two-thirds",
-  value: session["deceased-full-name"]
+  value: data["deceased-full-name"]
 }) }}
 
 {{ govukDateInput({
@@ -43,15 +43,15 @@
   items: [
     {
       name: "day",
-      value: session['deceased-dob-day']
+      value: data['deceased-dob-day']
     },
     {
       name: "month",
-      value: session['deceased-dob-month']
+      value: data['deceased-dob-month']
     },
     {
       name: "year",
-      value: session['deceased-dob-year']
+      value: data['deceased-dob-year']
     }
   ]
   })
@@ -68,7 +68,7 @@
   id: "deceased-marital-status",
   name: "deceased-marital-status",
   classes: "govuk-!-width-two-thirds js-hidden",
-  value: session["deceased-marital-status"]
+  value: data["deceased-marital-status"]
 }) }}
 
 {% set securityPassedHtml %}

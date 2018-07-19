@@ -15,7 +15,7 @@
       id: "caller-full-name",
       name: "caller-full-name",
       classes: "govuk-!-width-two-thirds",
-      value: session["caller-full-name"]
+      value: data["caller-full-name"]
     }) }}
 
     {{ govukInput({
@@ -29,7 +29,7 @@
       id: "caller-phone-number",
       name: "caller-phone-number",
       classes: "govuk-!-width-two-thirds",
-      value: session["caller-phone-number"]
+      value: data["caller-phone-number"]
     }) }}
 
     {% set prefix = "caller" %}
@@ -49,7 +49,7 @@
       id: "leaflet-code",
       name: "leaflet-code",
       classes: "govuk-!-width-one-quarter",
-      value: session["leaflet-code"]
+      value: data["leaflet-code"]
     }) }}
 
     {{ govukInput({
@@ -63,7 +63,7 @@
       id: "caller-relationship",
       name: "caller-relationship",
       classes: "govuk-!-width-two-thirds",
-      value: session["caller-relationship"]
+      value: data["caller-relationship"]
     }) }}
 
     {% set isSpouseHtml %}
@@ -78,7 +78,7 @@
         id: "caller-national-insurance",
         name: "caller-national-insurance",
         classes: "govuk-!-width-two-thirds",
-        value: session["caller-national-insurance"]
+        value: data["caller-national-insurance"]
       }) }}
     {% endset -%}
 
@@ -102,7 +102,7 @@
           id: "spouse-full-name",
           name: "spouse-full-name",
           classes: "govuk-!-width-two-thirds",
-        value: session["spouse-full-name"]
+        value: data["spouse-full-name"]
         }) }}
 
         {{ govukInput({
@@ -116,7 +116,7 @@
           id: "spouse-phone-number",
           name: "spouse-phone-number",
           classes: "govuk-!-width-two-thirds",
-          value: session["spouse-phone-number"]
+          value: data["spouse-phone-number"]
         }) }}
 
         <div class="govuk-form-group">
@@ -143,7 +143,7 @@
           conditional: {
             html: isSpouseHtml
           },
-          checked: true if session['is-caller-spouse'] == 'true' else false
+          checked: true if data['is-caller-spouse'] == 'true' else false
         },
         {
           value: "false",
@@ -151,7 +151,7 @@
           conditional: {
             html: isNotSpouseHtml
           },
-          checked: true if session['is-caller-spouse'] == 'false' else false
+          checked: true if data['is-caller-spouse'] == 'false' else false
         }
       ]
     }) }}
@@ -176,7 +176,7 @@
           id: "executor-full-name",
           name: "executor-full-name",
           classes: "govuk-!-width-two-thirds",
-          value: session["executor-full-name"]
+          value: data["executor-full-name"]
         }) }}
 
         {{ govukInput({
@@ -190,7 +190,7 @@
           id: "executor-phone-number",
           name: "executor-phone-number",
           classes: "govuk-!-width-two-thirds",
-          value: session["executor-phone-number"]
+          value: data["executor-phone-number"]
         }) }}
 
         <div class="govuk-form-group">
@@ -214,7 +214,7 @@
         {
           value: "true",
           text: "Yes",
-          checked: true if session['is-caller-executor'] == 'true' else false
+          checked: true if data['is-caller-executor'] == 'true' else false
         },
         {
           value: "false",
@@ -222,7 +222,7 @@
           conditional: {
             html: isNotExecutorHtml
           },
-          checked: true if session['is-caller-executor'] == 'false' else false
+          checked: true if data['is-caller-executor'] == 'false' else false
         }
       ]
     }) }}

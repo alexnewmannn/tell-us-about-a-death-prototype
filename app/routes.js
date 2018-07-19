@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const config = require('./config.js')
-const path = require('path');
+const fs = require('fs');
 
 // Route index page
 router.get('/', function (req, res) {
@@ -14,6 +14,34 @@ router.get('*/search-results', (req, res, next) => {
   const query = req.session.data['search-national-insurance'];
   res.locals.result = search(query);
   next();
+})
+
+router.get('*/versions*', (req, res, next) => {
+  res.locals.version = getVersion(req.params[1]);
+  next();
+})
+
+const getVersion = ((url, index = 0) => url.slice(1).split('/')[index]);
+
+const handleMissingVersionRoute = (version, route, res) => {
+  const fileExists = fs.existsSync(`app/views/${route}`);
+  let renderedRoute = route;
+  if (!fileExists) {
+    renderedRoute = route.replace(version, 'base');
+  }
+  console.log(renderedRoute)
+  // hospital /versions/hospital/check.html
+  return res.render(`${renderedRoute.slice(1)}`)
+};
+
+router.get('*/check*', (req, res, next) => {
+  let version = getVersion(req.params[0], 1);
+  return handleMissingVersionRoute(version, `${req.params[0]}/check.html`, res);
+})
+
+router.get('*/complete*', (req, res, next) => {
+  let version = getVersion(req.params[0], 1);
+  return handleMissingVersionRoute(version, `${req.params[0]}/complete.html`, res);
 })
 
 router.get('*/deceased-trace', (req, res, next) => {

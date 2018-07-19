@@ -12,15 +12,15 @@
   items: [
     {
       name: "day",
-      value: session['deceased-dod-day']
+      value: data['deceased-dod-day']
     },
     {
       name: "month",
-      value: session['deceased-dod-month']
+      value: data['deceased-dod-month']
     },
     {
       name: "year",
-      value: session['deceased-dod-year']
+      value: data['deceased-dod-year']
     }
   ]
   })
@@ -37,7 +37,7 @@
         id: "hospital-location-group"
       }
     },
-    value: session['hospital-location']
+    value: data['hospital-location']
   }) }}
 
   {{ govukInput({
@@ -51,7 +51,7 @@
         id: "hospital-duration-group"
       }
     },
-    value: session['hospital-duration']
+    value: data['hospital-duration']
   }) }}
 {% endset -%}
 
@@ -86,7 +86,7 @@
       conditional: {
         html: hospitalInfoHtml
       },
-      checked: true if session['hospital-death'] == 'true' else false
+      checked: true if data['hospital-death'] == 'true' else false
     },
     {
       value: false,
@@ -94,7 +94,7 @@
       conditional: {
         html: deathLocationHtml
       },
-      checked: true if session['hospital-death'] == 'false' else false
+      checked: true if data['hospital-death'] == 'false' else false
     }
   ]
 }) }}
@@ -127,14 +127,14 @@
     {
       value: true,
       text: "Yes",
-      checked: true if session['deceased-address'] == 'true' else false
+      checked: true if data['deceased-address'] == 'true' else false
     },
     {
       value: false,
       text: "No",
       conditional: {
         html: deceasedAddressHtml
-      }, checked: true if session['deceased-address'] == 'false' else false
+      }, checked: true if data['deceased-address'] == 'false' else false
     }
   ]
 }) }}
@@ -154,12 +154,12 @@
     {
       value: true,
       text: "Yes",
-      checked: true if session['driving-license'] == 'true' else false
+      checked: true if data['driving-license'] == 'true' else false
     },
     {
       value: false,
       text: "No",
-      checked: true if session['driving-license'] == 'false' else false
+      checked: true if data['driving-license'] == 'false' else false
     }
   ]
 }) }}
@@ -178,12 +178,12 @@
     {
       value: true,
       text: "Yes",
-      checked: true if session['vehicle-ownership'] == 'true' else false
+      checked: true if data['vehicle-ownership'] == 'true' else false
     },
     {
       value: false,
       text: "No",
-      checked: true if session['vehicle-ownership'] == 'false' else false
+      checked: true if data['vehicle-ownership'] == 'false' else false
     }
   ]
 }) }}
@@ -202,12 +202,12 @@
     {
       value: true,
       text: "Yes",
-      checked: true if session['passport-number'] == 'true' else false
+      checked: true if data['passport-number'] == 'true' else false
     },
     {
       value: false,
       text: "No",
-      checked: true if session['passport-number'] == 'false' else false
+      checked: true if data['passport-number'] == 'false' else false
     }
   ]
 }) }}

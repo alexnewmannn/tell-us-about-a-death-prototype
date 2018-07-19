@@ -1,12 +1,12 @@
 <h2 class="govuk-heading-m">{{"deceased_details_heading" | translate}}</h2>
 <dl class="app-check-your-answers app-check-your-answers--long">
-  {% if session['deceased-full-name'] %}
+  {% if data['deceased-full-name'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "full_name" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-full-name']}}
+        {{data['deceased-full-name']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification/deceased-trace#deceased-full-name-group">
@@ -17,13 +17,13 @@
     </div>
   {% endif %}
 
-  {% if (session['deceased-dob-day']) and (session['deceased-dob-month']) and (session['deceased-dob-year']) %}
+  {% if (data['deceased-dob-day']) and (data['deceased-dob-month']) and (data['deceased-dob-year']) %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "dob_title" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-dob-day']}}/{{session['deceased-dob-month']}}/{{session['deceased-dob-year']}}
+        {{data['deceased-dob-day']}}/{{data['deceased-dob-month']}}/{{data['deceased-dob-year']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification/deceased-trace#deceased-dob">
@@ -34,13 +34,13 @@
     </div>
   {% endif %}
 
-  {% if session['deceased-national-insurance'] %}
+  {% if data['deceased-national-insurance'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "national_insurance" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-national-insurance']}}
+        {{data['deceased-national-insurance']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification/deceased-trace#deceased-national-insurance-group">
@@ -51,13 +51,13 @@
     </div>
   {% endif %}
 
-  {% if session['deceased-marital-status'] %}
+  {% if data['deceased-marital-status'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "marital_status" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-marital-status']}}
+        {{data['deceased-marital-status']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification/deceased-trace#deceased-marital-status-group">
@@ -68,13 +68,13 @@
     </div>
   {% endif %}
 
-  {% if (session['deceased-dod-day']) and (session['deceased-dod-month']) and (session['deceased-dod-year']) %}
+  {% if (data['deceased-dod-day']) and (data['deceased-dod-month']) and (data['deceased-dod-year']) %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "dod_title" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-dod-day']}}/{{session['deceased-dod-month']}}/{{session['deceased-dod-year']}}
+        {{data['deceased-dod-day']}}/{{data['deceased-dod-month']}}/{{data['deceased-dod-year']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification/deceased-details#deceased-dod">
@@ -86,20 +86,20 @@
   {% endif %}
 
    {%
-    if (session['deceased-line-1']) or (session['deceased-line-2'])
-    or (session['deceased-town-city']) or (session['deceased-county'])
-    or (session['postcode'])
+    if (data['deceased-line-1']) or (data['deceased-line-2'])
+    or (data['deceased-town-city']) or (data['deceased-county'])
+    or (data['postcode'])
   %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "address" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-line-1']}}
-        <br /> {{session['deceased-line-2']}}
-        <br /> {{session['deceased-town-city']}}
-        <br /> {{session['deceased-county']}}
-        <br /> {{session['deceased-postcode']}}
+        {{data['deceased-line-1']}}
+        <br /> {{data['deceased-line-2']}}
+        <br /> {{data['deceased-town-city']}}
+        <br /> {{data['deceased-county']}}
+        <br /> {{data['deceased-postcode']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="#">
@@ -110,13 +110,13 @@
     </div>
   {% endif %}
 
-  {% if session['deceased-passport'] %}
+  {% if data['deceased-passport'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "passport" | translate }}
       </dt>
       <dd class="app-check-your-answers__answer">
-        {{session['deceased-passport']}}
+        {{data['deceased-passport']}}
       </dd>
       <dd class="app-check-your-answers__change">
         <a href="new-notification/deceased-details#deceased-passport-group">
@@ -127,8 +127,8 @@
     </div>
   {% endif %}
 
-  {% if session['hospital-location-autocomplete'] or session['hospital-location'] %}
-    {% set location = session['hospital-location-autocomplete'] if session['hospital-location-autocomplete'] else session['hospital-location'] %}
+  {% if data['hospital-location-autocomplete'] or data['hospital-location'] %}
+    {% set location = data['hospital-location-autocomplete'] if data['hospital-location-autocomplete'] else data['hospital-location'] %}
     <div class="app-check-your-answers__contents">
       <dt class="app-check-your-answers__question">
         {{ "hospital_location" | translate }}

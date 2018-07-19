@@ -15,15 +15,15 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{"check_title" | translate}}</h1>
-    <p>{{ "check_description" | translate}} {{session["deceased-full-name"]}}</p>
+    <p>{{ "check_description" | translate}} {{data["deceased-full-name"]}}</p>
 
     {% include "versions/base/includes/check-caller.html" %}
 
-    {% if session['spouse-full-name'] %}
+    {% if data['spouse-full-name'] %}
       {% include "versions/base/includes/check-spouse.html" %}
     {% endif %}
 
-    {% if session['executor-full-name'] %}
+    {% if data['executor-full-name'] %}
       {% include "versions/base/includes/check-executor.html" %}
     {% endif %}
 

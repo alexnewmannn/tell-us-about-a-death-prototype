@@ -239,7 +239,6 @@ app.get(/\.html?$/i, function (req, res) {
 
 // App folder routes get priority
 app.get(/^\/([^.]+)$/, function (req, res) {
-  app.locals.session = req.session.data;
   utils.matchRoutes(req, res)
 })
 

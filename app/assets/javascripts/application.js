@@ -11,8 +11,9 @@ $(document).ready(function () {
    */
   const setupHospitalAutoComplete = () => {
     const hospitalLocationEl = document.getElementById('hospital-location');
+    const isSelectEl = hospitalLocationEl.tagName.toLowerCase() === 'select';
 
-    if (hospitalLocationEl && hospitalLocationEl.tagName.toLowerCase() === 'select') {
+    if (hospitalLocationEl && isSelectEl) {
       accessibleAutocomplete.enhanceSelectElement({
         selectElement: hospitalLocationEl,
         classes: "govuk-!-width-two-thirds",
@@ -29,7 +30,8 @@ $(document).ready(function () {
     const relationshipEl = document.getElementById('caller-relationship');
     if (relationshipEl) {
       const maritalStatusEl = document.getElementById('deceased-marital-status');
-      const relationships = ['husband', 'wife', 'exhusband',];
+      const maritalStatusSecurityEl = document.querySelector('[value="security-marital-status"]');
+      const relationships = ['husband', 'wife', 'exhusband', 'exwife'];
 
       /**
        * Checks whether the entered relationship to deceased can be mapped to a valid marital status
@@ -38,14 +40,14 @@ $(document).ready(function () {
       const isValidRelationship = val => relationships.includes(val);
 
       /**
-       * If the maritalStatusEl exists and has a value then we should show the element on page load
+       * If the maritalStatusEl exists and has a value then we should show the element on page load.
+       * If a security question for marital status axists, check it and disable it
       */
       const showMaritalStatus = () => {
         if (maritalStatusEl && maritalStatusEl.value) {
           maritalStatusEl.classList.remove('js-hidden');
           maritalStatusEl.previousElementSibling.classList.remove('js-hidden');
 
-          const maritalStatusSecurityEl = document.querySelector('[value="security-marital-status"]');
           if (maritalStatusSecurityEl) {
             maritalStatusSecurityEl.setAttribute('disabled', '')
             maritalStatusSecurityEl.checked = true;
@@ -66,7 +68,7 @@ $(document).ready(function () {
           case 'wife':
             return 'married';
             // what about civil partnership? new laws may allow het couples to become civil partnered also
-            // we don't know their gender, which could change, to make this assumption
+            // we don't know their gender, which could change anyway, to make this assumption
             // maybe the only assumption we can make is if they're the surviving spouse
 
           case 'exhusband':
